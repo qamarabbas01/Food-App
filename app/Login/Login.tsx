@@ -138,9 +138,9 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         padding: 30,
         alignItems: 'center',
-        justifyContent:'center',
+        justifyContent: 'center',
         elevation: 5,
-        height:600
+        height: 600
     },
     logo: {
         height: 100,
@@ -155,7 +155,7 @@ const styles = StyleSheet.create({
     },
     tabText: {
         fontSize: 18,
-        fontFamily:'Poppins_400Regular',
+        fontFamily: 'Poppins_400Regular',
         fontWeight: '600',
         color: '#999',
     },
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         fontSize: 14,
         fontWeight: '500',
-        fontFamily:'Poppins_400Regular',
+        fontFamily: 'Poppins_400Regular',
     },
     input: {
         borderBottomWidth: 1,
@@ -185,7 +185,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         paddingVertical: 8,
         fontSize: 16,
-        fontFamily:'Poppins_400Regular',
+        fontFamily: 'Poppins_400Regular',
     },
     forgot: {
         alignSelf: 'flex-end',
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     buttonText: {
         color: '#fff',
         fontWeight: '600',
-        fontFamily:'Poppins_700Bold',
+        fontFamily: 'Poppins_700Bold',
         fontSize: 18,
     },
 });

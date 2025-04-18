@@ -21,7 +21,6 @@ const HomeScreen = () => {
 
   const categories = ["All", "Foods", "Drinks", "Snacks", "Sauces"];
 
-
   const allItems = Object.values(items).flat();
 
   const displayedItems = activeCategory === "All" ? allItems : items[activeCategory];
@@ -32,7 +31,6 @@ const HomeScreen = () => {
     Pacifico_400Regular,
   });
 
-
   React.useEffect(() => {
     if (fontsLoaded) {
       SplashScreen.hideAsync();
@@ -42,7 +40,6 @@ const HomeScreen = () => {
   if (!fontsLoaded) {
     return null;
   }
-
 
   return (
     <View style={styles.container}>
