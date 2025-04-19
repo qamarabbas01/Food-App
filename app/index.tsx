@@ -37,7 +37,7 @@ const GetStartedScreen = () => {
         shouldPlay
         isLooping
         isMuted
-        resizeMode={ResizeMode.COVER}
+        resizeMode={ResizeMode.CONTAIN}
       />
 
       <View style={styles.overlay}>

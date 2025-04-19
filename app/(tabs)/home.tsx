@@ -42,7 +42,7 @@ const HomeScreen = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Ionicons name="menu" size={24} />
         <Ionicons name="cart-outline" size={24} onPress={() => router.push('/(tabs)/cart')} />
@@ -109,7 +109,7 @@ const HomeScreen = () => {
           ))}
         </ScrollView>
       )}
-    </View>
+    </ScrollView>
   );
 };
 

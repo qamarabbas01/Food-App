@@ -39,8 +39,8 @@ const FoodDetail: React.FC<FoodDetailProps> = ({ food }) => {
                 <Text style={styles.detailstext}>All our foods are doubled checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.</Text>
             </View>
 
-            <TouchableOpacity style={styles.button} onPress={() => alert('Comming Soon')}>
-                <Text style={styles.buttonText}>Add To Cart</Text>
+            <TouchableOpacity style={styles.button} onPress={() => alert('Add to cart')}>
+                <Text style={styles.buttonText}>Add to cart</Text>
             </TouchableOpacity>
         </SafeAreaView>
     );
