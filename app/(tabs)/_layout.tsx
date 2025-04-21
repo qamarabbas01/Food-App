@@ -22,9 +22,6 @@ export default function TabLayout() {
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
-            shadowColor: '#000',
-            shadowOpacity: 0.2,
-            borderRadius:30
           },
         }}
       >

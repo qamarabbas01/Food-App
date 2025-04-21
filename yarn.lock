@@ -2021,6 +2021,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-community/masked-view@npm:^0.1.11":
+  version: 0.1.11
+  resolution: "@react-native-community/masked-view@npm:0.1.11"
+  peerDependencies:
+    react: ">=16.0"
+    react-native: ">=0.57"
+  checksum: 246bcd94a6a2cafc415c7a192fb5a76ef7cd9b648b47ea4b2366f06128376ab377dcff3fab676261050fd3a97324bde5d64802aa3e8d1580fe6c0e3b0138cefc
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.76.9":
   version: 0.76.9
   resolution: "@react-native/assets-registry@npm:0.76.9"
@@ -4866,6 +4876,7 @@ __metadata:
     "@expo-google-fonts/pacifico": ^0.3.0
     "@expo-google-fonts/poppins": ^0.3.0
     "@expo/vector-icons": ^14.1.0
+    "@react-native-community/masked-view": ^0.1.11
     "@react-navigation/bottom-tabs": ^7.3.10
     "@react-navigation/drawer": ^7.3.9
     "@react-navigation/material-top-tabs": ^7.2.10
@@ -4894,7 +4905,7 @@ __metadata:
     react-native: 0.76.9
     react-native-gesture-handler: ~2.20.2
     react-native-reanimated: ~3.16.1
-    react-native-safe-area-context: ^4.12.0
+    react-native-safe-area-context: 4.12.0
     react-native-screens: ~4.4.0
     react-native-tab-view: ^4.0.10
     react-native-vector-icons: ^10.2.0
@@ -8169,7 +8180,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-safe-area-context@npm:^4.12.0":
+"react-native-safe-area-context@npm:4.12.0":
   version: 4.12.0
   resolution: "react-native-safe-area-context@npm:4.12.0"
   peerDependencies:

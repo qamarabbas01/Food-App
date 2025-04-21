@@ -1,12 +1,13 @@
-import { Stack } from "expo-router";
+import { Drawer } from "expo-router/drawer";
+import Sidebar from "@/components/Sidebar/Sidebar";
 
 export default function RootLayout() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="Login/Login" options={{ headerShown: false }} />
-      <Stack.Screen name="food/[id]" options={{ headerShown: false }} />
-    </Stack>
+    <Drawer
+      drawerContent={(props) => <Sidebar {...props} />}
+      screenOptions={{ headerShown: false }}
+    >
+      <Drawer.Screen name="(tabs)" />
+    </Drawer>
   );
 }

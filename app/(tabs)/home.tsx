@@ -9,15 +9,18 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useFonts, Poppins_400Regular, Poppins_700Bold } from '@expo-google-fonts/poppins';
-import { Pacifico_400Regular } from '@expo-google-fonts/pacifico';
-import * as SplashScreen from 'expo-splash-screen';
-import { router } from "expo-router";
+import { useFonts, Poppins_400Regular, Poppins_700Bold } from "@expo-google-fonts/poppins";
+import { Pacifico_400Regular } from "@expo-google-fonts/pacifico";
+import * as SplashScreen from "expo-splash-screen";
 import { items } from "../data/foodItems";
+import { router } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 
 SplashScreen.preventAutoHideAsync();
+
 const HomeScreen = () => {
   const [activeCategory, setActiveCategory] = useState<keyof typeof items | "All">("All");
+  const navigation = useNavigation();
 
   const categories = ["All", "Foods", "Drinks", "Snacks", "Sauces"];
 
@@ -44,7 +47,7 @@ const HomeScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Ionicons name="menu" size={24} />
+        <Ionicons name="menu" size={24} onPress={() => navigation.openDrawer()} />
         <Ionicons name="cart-outline" size={24} onPress={() => router.push('/(tabs)/cart')} />
       </View>
 
@@ -161,14 +164,14 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     borderBottomColor: "#FF5C00",
   },
-  cardcontainer: {
+  gridWrapper: {
     display: 'flex',
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
     paddingBottom: 90,
   },
-  card: {
+  gridCard: {
     backgroundColor: "#fff",
     borderRadius: 20,
     padding: 15,
@@ -193,20 +196,5 @@ const styles = StyleSheet.create({
     color: "#FF5C00",
     marginTop: 5,
     fontWeight: "bold"
-  },
-  gridWrapper: {
-    display: 'flex',
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    paddingBottom: 90,
-  },
-  gridCard: {
-    backgroundColor: "#fff",
-    borderRadius: 20,
-    padding: 15,
-    marginBottom: 10,
-    width: "48%",
-    alignItems: "center",
   },
 });
