@@ -3,7 +3,6 @@ import React from "react";
 import { Tabs } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Octicons from '@expo/vector-icons/Octicons';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 export default function TabLayout() {
   return (
@@ -22,6 +21,7 @@ export default function TabLayout() {
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
+            height: 70,
           },
         }}
       >
@@ -30,7 +30,7 @@ export default function TabLayout() {
           options={{
             headerShown: false,
             tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="home" size={30} color={color} />
+              <Octicons name="home" size={25} color={color} />
             ),
           }}
         />

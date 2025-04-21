@@ -186,6 +186,7 @@ const styles = StyleSheet.create({
         paddingVertical: 8,
         fontSize: 16,
         fontFamily: 'Poppins_400Regular',
+        color:"#000"
     },
     forgot: {
         alignSelf: 'flex-end',
