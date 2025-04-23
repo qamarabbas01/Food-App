@@ -31,6 +31,7 @@ const Sidebar = ({ navigation }: any) => {
         icon="person-circle-outline"
         label="Profile"
         IconComponent={Ionicons}
+        onPress={() => router.push('/Profile/Profile')}
       />
       <SidebarLink
         icon="shoppingcart"
