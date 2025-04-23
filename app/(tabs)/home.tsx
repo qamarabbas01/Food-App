@@ -14,7 +14,8 @@ import { Pacifico_400Regular } from "@expo-google-fonts/pacifico";
 import * as SplashScreen from "expo-splash-screen";
 import { items } from "../data/foodItems";
 import { router } from "expo-router";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, DrawerActions } from "@react-navigation/native";
+import { StatusBar } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -46,16 +47,17 @@ const HomeScreen = () => {
 
   return (
     <ScrollView style={styles.container}>
+      <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       <View style={styles.header}>
-        <Ionicons name="menu" size={24} onPress={() => navigation.openDrawer()} />
+        <Ionicons name="menu" size={24} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
         <Ionicons name="cart-outline" size={24} onPress={() => router.push('/(tabs)/cart')} />
       </View>
 
       <Text style={[styles.title, { fontFamily: 'Poppins_700Bold' }]}>Delicious{"\n"}food for you</Text>
 
       <View style={styles.searchBar}>
-        <Ionicons name="search" size={20} color="#aaa" />
-        <TextInput placeholder="Search" style={[styles.input, { fontFamily: 'Poppins_400Regular' }]} />
+        <Ionicons name="search" size={20} color="#64748B" />
+        <TextInput placeholder="Search" placeholderTextColor="#94A3B8" style={[styles.input, { fontFamily: 'Poppins_400Regular' }]} />
       </View>
 
       <ScrollView
@@ -137,11 +139,16 @@ const styles = StyleSheet.create({
   },
   searchBar: {
     flexDirection: "row",
-    backgroundColor: "#eee",
-    borderRadius: 10,
-    padding: 10,
+    borderRadius: 16,
+    padding: 12,
     alignItems: "center",
     marginBottom: 20,
+    backgroundColor: "#F1F5F9",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
   },
   input: {
     marginLeft: 10,

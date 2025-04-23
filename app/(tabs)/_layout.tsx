@@ -46,7 +46,7 @@ export default function TabLayout() {
         />
 
         <Tabs.Screen
-          name="notification"
+          name="favorite"
           options={{
             headerShown: false,
             tabBarIcon: ({ color }) => (

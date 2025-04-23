@@ -57,7 +57,7 @@ const Sidebar = ({ navigation }: any) => {
 
       <TouchableOpacity
         style={styles.signOut}
-        onPress={() => console.log("Sign out")}
+        onPress={() => router.push('/Login/Login')}
         accessibilityLabel="Sign out"
         accessibilityRole="button"
       >
