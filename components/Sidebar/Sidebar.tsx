@@ -42,6 +42,7 @@ const Sidebar = ({ navigation }: any) => {
       <SidebarLink
         icon="tago"
         label="Offer and Promo"
+        onPress={() => router.push('/Offers/Offers')}
         IconComponent={AntDesign}
       />
       <SidebarLink
@@ -98,6 +99,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: 15,
     fontFamily: "Poppins_700Bold",
+    fontWeight:'bold'
   },
   signOut: {
     display:'flex',
