@@ -1,12 +1,13 @@
 import { Image, SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { router } from 'expo-router';
 
 const Profile = () => {
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.title}>My Profile</Text>
+            <MaterialIcons name="arrow-back-ios" size={24} color="#0a7ea4" onPress={() => router.back()} style={styles.title} />
 
+            <Text style={styles.title}>My Profile</Text>
             <View style={styles.card}>
                 <Image
                     source={require('../../assets/images/food.avif')}
@@ -19,9 +20,34 @@ const Profile = () => {
             <TouchableOpacity
                 style={styles.link}
                 accessibilityRole="button"
+                onPress={() => router.push('/Orders/Orders')}
             >
-                <Ionicons name={'home'} size={23} color="#0a7ea4" />
+                <MaterialIcons name="home" size={24} color="#0a7ea4" />
                 <Text style={styles.linkText}>Orders</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={styles.link}
+                accessibilityRole="button"
+            >
+                <MaterialIcons name="pending-actions" size={24} color="#0a7ea4" />
+                <Text style={styles.linkText}>Pending reviews</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={styles.link}
+                accessibilityRole="button"
+            >
+                <MaterialIcons name="question-answer" size={24} color="#0a7ea4" />
+                <Text style={styles.linkText}>Faq</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                style={styles.link}
+                accessibilityRole="button"
+            >
+                <MaterialIcons name="help" size={24} color="#0a7ea4" />
+                <Text style={styles.linkText}>Help</Text>
             </TouchableOpacity>
 
             <View style={styles.actions}>
@@ -44,11 +70,18 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         padding: 20,
     },
+    backButton: {
+        position: 'absolute',
+        top: 20,
+        left: 20,
+        zIndex: 1,
+    },
     title: {
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 20,
-        textAlign: 'center',
+        marginLeft: 12,
+        textAlign: 'left',
         fontFamily: 'Poppins_700Bold',
     },
     card: {
@@ -84,6 +117,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginVertical: 20,
+        marginHorizontal: 20,
         paddingVertical: 12,
         paddingHorizontal: 15,
         borderRadius: 8,
@@ -104,6 +138,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 20,
+        marginHorizontal: 20,
     },
     button: {
         backgroundColor: '#0a7ea4',
@@ -123,4 +158,4 @@ const styles = StyleSheet.create({
     logoutButtonText: {
         color: '#fff',
     },
-}); 
+});

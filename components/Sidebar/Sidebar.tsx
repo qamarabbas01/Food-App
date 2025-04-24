@@ -36,6 +36,7 @@ const Sidebar = ({ navigation }: any) => {
       <SidebarLink
         icon="shoppingcart"
         label="Orders"
+        onPress={() => router.push('/Orders/Orders')}
         IconComponent={AntDesign}
       />
       <SidebarLink
