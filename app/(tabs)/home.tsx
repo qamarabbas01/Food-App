@@ -50,7 +50,7 @@ const HomeScreen = () => {
       <StatusBar barStyle="dark-content" backgroundColor="transparent" translucent />
       <View style={styles.header}>
         <Ionicons name="menu" size={24} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} />
-        <Ionicons name="cart-outline" size={24} onPress={() => router.push('/(tabs)/cart')} />
+        <Ionicons name="notifications-outline" size={24} onPress={() => router.push('/Notifications/Notifications')} />
       </View>
 
       <Text style={[styles.title, { fontFamily: 'Poppins_700Bold' }]}>Delicious{"\n"}food for you</Text>

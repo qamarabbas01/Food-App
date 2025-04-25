@@ -48,11 +48,13 @@ const Sidebar = ({ navigation }: any) => {
       <SidebarLink
         icon="privacy-tip"
         label="Privacy Policy"
+        onPress={() => router.push('/PrivacyPolicy/PrivacyPolicy')}
         IconComponent={MaterialIcons}
       />
       <SidebarLink
         icon="security"
         label="Security"
+        onPress={() => router.push('/Security/Security')}
         IconComponent={MaterialIcons}
       />
 
@@ -99,11 +101,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: 15,
     fontFamily: "Poppins_700Bold",
-    fontWeight:'bold'
+    fontWeight: 'bold'
   },
   signOut: {
-    display:'flex',
-    alignItems:'center',
+    display: 'flex',
+    alignItems: 'center',
     flexDirection: "row",
     gap: 6,
     paddingVertical: 15,
