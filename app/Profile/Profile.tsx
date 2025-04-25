@@ -1,63 +1,75 @@
-import { Image, SafeAreaView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Image, SafeAreaView, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { router } from 'expo-router';
 
 const Profile = () => {
     return (
         <SafeAreaView style={styles.container}>
-            <MaterialIcons name="arrow-back-ios" size={24} color="#0a7ea4" onPress={() => router.back()} style={styles.title} />
+            <ScrollView>
+                <MaterialIcons name="arrow-back-ios" size={24} color="#0a7ea4" onPress={() => router.back()} style={styles.title} />
 
-            <Text style={styles.title}>My Profile</Text>
-            <View style={styles.card}>
-                <Image
-                    source={require('../../assets/images/food.avif')}
-                    style={styles.profileImage}
-                />
-                <Text style={styles.name}>John Doe</Text>
-                <Text style={styles.email}>johndoe@example.com</Text>
-            </View>
+                <Text style={styles.title}>My Profile</Text>
+                <View style={styles.card}>
+                    <Image
+                        source={require('../../assets/images/food.avif')}
+                        style={styles.profileImage}
+                    />
+                    <Text style={styles.name}>John Doe</Text>
+                    <Text style={styles.email}>johndoe@example.com</Text>
+                </View>
 
-            <TouchableOpacity
-                style={styles.link}
-                accessibilityRole="button"
-                onPress={() => router.push('/Orders/Orders')}
-            >
-                <MaterialIcons name="home" size={24} color="#0a7ea4" />
-                <Text style={styles.linkText}>Orders</Text>
-            </TouchableOpacity>
+                <View style={styles.card}>
+                    <Text style={styles.cardTitle}>Delivery Address</Text>
+                    <Text style={styles.addressText}>123 Main Street</Text>
+                    <Text style={styles.addressText}>Springfield, IL 62704</Text>
+                    <Text style={styles.addressText}>United States</Text>
+                    <TouchableOpacity style={styles.editAddressButton}>
+                        <Text style={styles.editAddressButtonText}>Edit Address</Text>
+                    </TouchableOpacity>
+                </View>
 
-            <TouchableOpacity
-                style={styles.link}
-                accessibilityRole="button"
-            >
-                <MaterialIcons name="pending-actions" size={24} color="#0a7ea4" />
-                <Text style={styles.linkText}>Pending reviews</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                style={styles.link}
-                accessibilityRole="button"
-            >
-                <MaterialIcons name="question-answer" size={24} color="#0a7ea4" />
-                <Text style={styles.linkText}>Faq</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-                style={styles.link}
-                accessibilityRole="button"
-            >
-                <MaterialIcons name="help" size={24} color="#0a7ea4" />
-                <Text style={styles.linkText}>Help</Text>
-            </TouchableOpacity>
-
-            <View style={styles.actions}>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Edit Profile</Text>
+                <TouchableOpacity
+                    style={styles.link}
+                    accessibilityRole="button"
+                    onPress={() => router.push('/Orders/Orders')}
+                >
+                    <MaterialIcons name="home" size={24} color="#0a7ea4" />
+                    <Text style={styles.linkText}>Orders</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={[styles.button, styles.logoutButton]}>
-                    <Text style={[styles.buttonText, styles.logoutButtonText]}>Log Out</Text>
+
+                <TouchableOpacity
+                    style={styles.link}
+                    accessibilityRole="button"
+                >
+                    <MaterialIcons name="pending-actions" size={24} color="#0a7ea4" />
+                    <Text style={styles.linkText}>Pending reviews</Text>
                 </TouchableOpacity>
-            </View>
+
+                <TouchableOpacity
+                    style={styles.link}
+                    accessibilityRole="button"
+                >
+                    <MaterialIcons name="question-answer" size={24} color="#0a7ea4" />
+                    <Text style={styles.linkText}>Faq</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.link}
+                    accessibilityRole="button"
+                >
+                    <MaterialIcons name="help" size={24} color="#0a7ea4" />
+                    <Text style={styles.linkText}>Help</Text>
+                </TouchableOpacity>
+
+                <View style={styles.actions}>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.buttonText}>Edit Profile</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.button, styles.logoutButton]}>
+                        <Text style={[styles.buttonText, styles.logoutButtonText]}>Log Out</Text>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 };
@@ -112,6 +124,32 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#888',
         fontFamily: 'Poppins_400Regular',
+    },
+    cardTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 10,
+        fontFamily: 'Poppins_700Bold',
+    },
+    addressText: {
+        fontSize: 16,
+        color: '#555',
+        marginBottom: 5,
+        fontFamily: 'Poppins_400Regular',
+    },
+    editAddressButton: {
+        marginTop: 10,
+        backgroundColor: '#0a7ea4',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+    },
+    editAddressButtonText: {
+        color: '#fff',
+        fontSize: 14,
+        fontWeight: 'bold',
+        fontFamily: 'Poppins_700Bold',
     },
     link: {
         flexDirection: 'row',

@@ -1,15 +1,16 @@
 import { SafeAreaView, StyleSheet, Text, View, FlatList, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
+import { router } from 'expo-router';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([
     { id: 1, title: 'Veggie Tomato Mix', price: 13, image: require('../../assets/images/food.avif') },
     { id: 2, title: 'Cheese Burger', price: 10, image: require('../../assets/images/food2.avif') },
     { id: 3, title: 'Jollof Rice & Chicken', price: 11, image: require('../../assets/images/food3.avif') },
-    { id: 4, title: "Fresh Orange Juice", price: 10, image: require("../../assets/images/drink1.avif")},
-    { id: 5, title: "Chilled Coca-Cola", price: 20, image: require("../../assets/images/drink2.avif")},
-    { id: 6, title: "Tomato Sauce", price: 50, image: require("../../assets/images/sauce1.avif")},
-    { id: 1, title: "French Fries", price: 80, image: require("../../assets/images/snack1.avif")},
+    { id: 4, title: "Fresh Orange Juice", price: 10, image: require("../../assets/images/drink1.avif") },
+    { id: 5, title: "Chilled Coca-Cola", price: 20, image: require("../../assets/images/drink2.avif") },
+    { id: 6, title: "Tomato Sauce", price: 50, image: require("../../assets/images/sauce1.avif") },
+    { id: 1, title: "French Fries", price: 80, image: require("../../assets/images/snack1.avif") },
   ]);
 
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0).toFixed(2);
@@ -46,7 +47,10 @@ const Cart = () => {
       {cartItems.length > 0 && (
         <View style={styles.footer}>
           <Text style={styles.totalText}>Total: ${totalPrice}</Text>
-          <TouchableOpacity style={styles.checkoutButton}>
+          <TouchableOpacity
+            style={styles.checkoutButton}
+            onPress={() => router.push({ pathname: '/checkout/Checkout', params: { total: totalPrice } })}
+          >
             <Text style={styles.checkoutButtonText}>Proceed to Checkout</Text>
           </TouchableOpacity>
         </View>
