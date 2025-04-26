@@ -1,4 +1,5 @@
 
+import { useCart } from '@/context/CartContext';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { View, Text, Image, StyleSheet, SafeAreaView } from 'react-native';
@@ -15,6 +16,8 @@ interface FoodDetailProps {
 }
 
 const FoodDetail: React.FC<FoodDetailProps> = ({ food }) => {
+    const { addToCart } = useCart();
+
     if (!food) {
         return (
             <View style={styles.container}>
@@ -22,6 +25,16 @@ const FoodDetail: React.FC<FoodDetailProps> = ({ food }) => {
             </View>
         );
     }
+
+    const handleAddToCart = () => {
+        addToCart({
+          id: food.id,
+          title: food.title,
+          price: parseFloat(food.price.replace(",", "")),
+          image: food.image,
+        });
+        alert(`${food.title} added to cart!`);
+      };
 
     return (
         <SafeAreaView style={styles.container}>
@@ -39,7 +52,7 @@ const FoodDetail: React.FC<FoodDetailProps> = ({ food }) => {
                 <Text style={styles.detailstext}>All our foods are doubled checked before leaving our stores so by any case you found a broken food please contact our hotline immediately.</Text>
             </View>
 
-            <TouchableOpacity style={styles.button} onPress={() => alert('Add to cart')}>
+            <TouchableOpacity style={styles.button} onPress={handleAddToCart}>
                 <Text style={styles.buttonText}>Add to cart</Text>
             </TouchableOpacity>
         </SafeAreaView>

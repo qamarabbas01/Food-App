@@ -1,23 +1,14 @@
 import { SafeAreaView, StyleSheet, Text, View, FlatList, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { router } from 'expo-router';
+import { useCart } from '@/context/CartContext';
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([
-    { id: 1, title: 'Veggie Tomato Mix', price: 13, image: require('../../assets/images/food.avif') },
-    { id: 2, title: 'Cheese Burger', price: 10, image: require('../../assets/images/food2.avif') },
-    { id: 3, title: 'Jollof Rice & Chicken', price: 11, image: require('../../assets/images/food3.avif') },
-    { id: 4, title: "Fresh Orange Juice", price: 10, image: require("../../assets/images/drink1.avif") },
-    { id: 5, title: "Chilled Coca-Cola", price: 20, image: require("../../assets/images/drink2.avif") },
-    { id: 6, title: "Tomato Sauce", price: 50, image: require("../../assets/images/sauce1.avif") },
-    { id: 1, title: "French Fries", price: 80, image: require("../../assets/images/snack1.avif") },
-  ]);
+  const { cartItems, removeFromCart } = useCart();
 
-  const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0).toFixed(2);
-
-  const removeItem = (id: number) => {
-    setCartItems(cartItems.filter((item) => item.id !== id));
-  };
+  const totalPrice = cartItems
+    .reduce((sum, item) => sum + item.price, 0)
+    .toFixed(2);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -34,7 +25,10 @@ const Cart = () => {
                 <Text style={styles.itemTitle}>{item.title}</Text>
                 <Text style={styles.itemPrice}>${item.price.toFixed(2)}</Text>
               </View>
-              <TouchableOpacity onPress={() => removeItem(item.id)} style={styles.removeButton}>
+              <TouchableOpacity
+                onPress={() => removeFromCart(item.id)}
+                style={styles.removeButton}
+              >
                 <Text style={styles.removeButtonText}>Remove</Text>
               </TouchableOpacity>
             </View>

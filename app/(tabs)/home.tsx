@@ -21,13 +21,16 @@ SplashScreen.preventAutoHideAsync();
 
 const HomeScreen = () => {
   const [activeCategory, setActiveCategory] = useState<keyof typeof items | "All">("All");
+  const [searchQuery, setSearchQuery] = useState("");
   const navigation = useNavigation();
 
   const categories = ["All", "Foods", "Drinks", "Snacks", "Sauces"];
 
   const allItems = Object.values(items).flat();
 
-  const displayedItems = activeCategory === "All" ? allItems : items[activeCategory];
+  const displayedItems = (activeCategory === "All" ? allItems : items[activeCategory]).filter((item) =>
+    item.title.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const [fontsLoaded] = useFonts({
     Poppins_400Regular,
@@ -57,7 +60,13 @@ const HomeScreen = () => {
 
       <View style={styles.searchBar}>
         <Ionicons name="search" size={20} color="#64748B" />
-        <TextInput placeholder="Search" placeholderTextColor="#94A3B8" style={[styles.input, { fontFamily: 'Poppins_400Regular' }]} />
+        <TextInput
+          placeholder="Search"
+          placeholderTextColor="#94A3B8"
+          style={[styles.input, { fontFamily: 'Poppins_400Regular' }]}
+          value={searchQuery}
+          onChangeText={(text) => setSearchQuery(text)}
+        />
       </View>
 
       <ScrollView
@@ -65,8 +74,8 @@ const HomeScreen = () => {
         showsHorizontalScrollIndicator={false}
         style={styles.categories}
       >
-        {categories.map((cat, index) => (
-          <TouchableOpacity key={index} onPress={() => setActiveCategory(cat)}>
+        {categories.map((cat) => (
+          <TouchableOpacity key={cat} onPress={() => setActiveCategory(cat)}>
             <Text
               style={[
                 styles.category,
@@ -80,40 +89,19 @@ const HomeScreen = () => {
         ))}
       </ScrollView>
 
-      {activeCategory === "All" ? (
-        <ScrollView contentContainerStyle={styles.gridWrapper}>
-          {displayedItems.map((item: any) => (
-            <TouchableOpacity
-              key={item.id}
-              style={styles.gridCard}
-              onPress={() => {
-                router.push(`/food/${item.id}`);
-              }}
-            >
-              <Image source={item.image} style={styles.image} />
-              <Text style={[styles.cardTitle, { fontFamily: 'Poppins_400Regular' }]}>{item.title}</Text>
-              <Text style={[styles.price, { fontFamily: 'Poppins_400Regular' }]}>${item.price}</Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-      ) : (
-        <ScrollView contentContainerStyle={styles.gridWrapper}>
-          {displayedItems.map((item: any) => (
-            <TouchableOpacity
-              key={item.id}
-              style={styles.gridCard}
-              onPress={() => {
-                console.log(`Navigating to /food/${item.id}`);
-                router.push(`/food/${item.id}`);
-              }}
-            >
-              <Image source={item.image} style={styles.image} />
-              <Text style={[styles.cardTitle, { fontFamily: 'Poppins_400Regular' }]}>{item.title}</Text>
-              <Text style={[styles.price, { fontFamily: 'Poppins_400Regular' }]}>${item.price}</Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-      )}
+      <ScrollView contentContainerStyle={styles.gridWrapper}>
+        {displayedItems.map((item) => (
+          <TouchableOpacity
+            key={item.id}
+            style={styles.gridCard}
+            onPress={() => router.push(`/food/${item.id}`)}
+          >
+            <Image source={item.image} style={styles.image} />
+            <Text style={[styles.cardTitle, { fontFamily: 'Poppins_400Regular' }]}>{item.title}</Text>
+            <Text style={[styles.price, { fontFamily: 'Poppins_400Regular' }]}>${item.price}</Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
     </ScrollView>
   );
 };
