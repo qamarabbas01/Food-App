@@ -2,6 +2,7 @@ import { SafeAreaView, StyleSheet, Text, View, FlatList, Image, TouchableOpacity
 import React, { useState } from 'react';
 import { router } from 'expo-router';
 import { useCart } from '@/context/CartContext';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const Cart = () => {
   const { cartItems, removeFromCart } = useCart();
@@ -35,7 +36,12 @@ const Cart = () => {
           )}
         />
       ) : (
-        <Text style={styles.emptyCart}>Your cart is empty. Add some delicious food!</Text>
+
+        <View style={styles.content}>
+          <MaterialIcons name="shopping-cart" size={120} color="#CBD5E1" style={styles.cartIcon} />
+          <Text style={styles.emptyText}>No Cart yet</Text>
+          <Text style={styles.subText}>Your cart is empty. Add some delicious food!</Text>
+        </View>
       )}
 
       {cartItems.length > 0 && (
@@ -142,5 +148,27 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     fontFamily: 'Poppins_700Bold',
+  },
+  content: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+  },
+  cartIcon: {
+    marginBottom: 20,
+  },
+  emptyText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#0F172A',
+    fontFamily: 'Poppins_700Bold',
+    marginBottom: 8,
+  },
+  subText: {
+    fontSize: 16,
+    color: '#64748B',
+    textAlign: 'center',
+    fontFamily: 'Poppins_400Regular',
   },
 });

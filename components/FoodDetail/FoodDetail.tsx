@@ -28,13 +28,13 @@ const FoodDetail: React.FC<FoodDetailProps> = ({ food }) => {
 
     const handleAddToCart = () => {
         addToCart({
-          id: food.id,
-          title: food.title,
-          price: parseFloat(food.price.replace(",", "")),
-          image: food.image,
+            id: food.id,
+            title: food.title,
+            price: parseFloat(food.price.replace(",", "")),
+            image: food.image,
         });
         alert(`${food.title} added to cart!`);
-      };
+    };
 
     return (
         <SafeAreaView style={styles.container}>
