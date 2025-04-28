@@ -10,10 +10,12 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useLocalSearchParams } from 'expo-router';
+import CustomModal from '@/components/Modal/Modal';
 
 const Checkout = () => {
     const [selectedPayment, setSelectedPayment] = useState('card');
     const [selectedDelivery, setSelectedDelivery] = useState('door');
+    const [modalVisible, setModalVisible] = useState(false);
     const { total } = useLocalSearchParams();
 
     return (
@@ -86,8 +88,19 @@ const Checkout = () => {
             <TouchableOpacity
                 style={styles.checkoutButton}
             >
-                <Text style={[styles.checkoutButtonText, { fontFamily: 'Poppins_700Bold' }]}>Proceed to Payment</Text>
+                <Text style={[styles.checkoutButtonText, { fontFamily: 'Poppins_700Bold' }]} onPress={() => setModalVisible(true)}>Proceed to Payment</Text>
             </TouchableOpacity>
+
+            <CustomModal
+                visible={modalVisible}
+                onClose={() => setModalVisible(false)}
+                onConfirm={() => {
+                    setModalVisible(false);
+                    console.log('Payment confirmed');
+                }}
+                title="Payment Confirmation"
+                message="Are you sure you want to proceed with the payment?"
+            />
         </SafeAreaView>
     );
 };
