@@ -18,14 +18,33 @@ const AuthScreen = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
+    const validateEmail = (email: string) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validatePassword = (password: string) => {
+        return password.length >= 6;
+    };
+
     const handleAuth = () => {
         if (!email.trim()) {
             alert('Enter your email');
             return;
         }
 
+        if (!validateEmail(email)) {
+            alert('Enter a valid email address');
+            return;
+        }
+
         if (!password.trim()) {
             alert('Enter your password');
+            return;
+        }
+
+        if (!validatePassword(password)) {
+            alert('Password must be at least 6 characters long');
             return;
         }
 
@@ -39,7 +58,9 @@ const AuthScreen = () => {
                 alert('Passwords do not match');
                 return;
             }
+        }
 
+        if (!isLogin) {
             console.log('Signing up user:', email);
             router.push('/(tabs)/home');
         } else {
@@ -140,7 +161,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         elevation: 5,
-        height: 600
+        height: 600,
     },
     logo: {
         height: 100,
@@ -186,7 +207,7 @@ const styles = StyleSheet.create({
         paddingVertical: 8,
         fontSize: 16,
         fontFamily: 'Poppins_400Regular',
-        color:"#000"
+        color: '#000',
     },
     forgot: {
         alignSelf: 'flex-end',
