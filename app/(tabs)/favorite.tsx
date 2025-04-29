@@ -1,10 +1,12 @@
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native";
 import { useFavorites } from "@/context/FavoritesContext";
+import { useRouter } from "expo-router";
 
 const Favorite = () => {
   const { favoriteItems } = useFavorites();
+  const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container}>
@@ -13,11 +15,15 @@ const Favorite = () => {
       {favoriteItems.length > 0 ? (
         <ScrollView contentContainerStyle={styles.gridWrapper}>
           {favoriteItems.map((item) => (
-            <View key={item.id} style={styles.gridCard}>
+            <TouchableOpacity
+              key={item.id}
+              style={styles.gridCard}
+              onPress={() => router.push(`/food/${item.id}`)}
+            >
               <Image source={item.image} style={styles.image} />
               <Text style={styles.cardTitle}>{item.title}</Text>
               <Text style={styles.price}>${item.price}</Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       ) : (
