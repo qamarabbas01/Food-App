@@ -1,9 +1,11 @@
-import { SafeAreaView, StyleSheet, TextInput, View, Text, FlatList, Image } from 'react-native';
+import { SafeAreaView, StyleSheet, TextInput, View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { items } from '../data/foodItems';
+import { useRouter } from 'expo-router'; // Import useRouter for navigation
 
 const Search = () => {
+  const router = useRouter(); // Initialize router for navigation
   const allItems = Object.values(items).flat();
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -31,13 +33,16 @@ const Search = () => {
           data={filteredData}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => (
-            <View style={styles.resultItem}>
+            <TouchableOpacity
+              style={styles.resultItem}
+              onPress={() => router.push(`/food/${item.id}`)}
+            >
               <Image source={item.image} style={styles.image} />
               <View>
                 <Text style={styles.resultTitle}>{item.title}</Text>
                 <Text style={styles.resultPrice}>${item.price}</Text>
               </View>
-            </View>
+            </TouchableOpacity>
           )}
         />
       ) : (
