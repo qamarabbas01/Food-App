@@ -3,6 +3,7 @@ import React from "react";
 import { SafeAreaView } from "react-native";
 import { useFavorites } from "@/context/FavoritesContext";
 import { useRouter } from "expo-router";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 const Favorite = () => {
   const { favoriteItems } = useFavorites();
@@ -27,7 +28,13 @@ const Favorite = () => {
           ))}
         </ScrollView>
       ) : (
-        <Text style={styles.emptyMessage}>You have no favorite items yet!</Text>
+        <View style={styles.emptyContainer}>
+          <Ionicons name="heart-dislike-outline" size={100} color="#CBD5E1" style={styles.emptyIcon} />
+          <Text style={styles.emptyTitle}>No favorites yet</Text>
+          <Text style={styles.emptyMessage}>
+            Tap the heart icon on any food item to add it here.
+          </Text>
+        </View>
       )}
     </SafeAreaView>
   );
@@ -39,7 +46,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    padding: 10,
+    padding: 16,
   },
   title: {
     fontSize: 24,
@@ -87,11 +94,27 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: "Poppins_400Regular",
   },
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 32,
+  },
+  emptyIcon: {
+    marginBottom: 24,
+  },
+  emptyTitle: {
+    fontSize: 22,
+    color: "#1E293B",
+    textAlign: "center",
+    fontFamily: "Poppins_700Bold",
+    marginBottom: 10,
+  },
   emptyMessage: {
     fontSize: 16,
-    color: "#aaa",
+    color: "#64748B",
     textAlign: "center",
-    marginTop: 50,
     fontFamily: "Poppins_400Regular",
+    marginBottom: 20,
   },
 });
