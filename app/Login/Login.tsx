@@ -102,6 +102,7 @@ const AuthScreen = () => {
                             onChangeText={setEmail}
                             autoCapitalize="none"
                             keyboardType="email-address"
+                            placeholderTextColor="#94A3B8"
                         />
 
                         <Text style={styles.label}>Password</Text>
@@ -111,6 +112,7 @@ const AuthScreen = () => {
                             value={password}
                             onChangeText={setPassword}
                             secureTextEntry
+                            placeholderTextColor="#94A3B8"
                         />
 
                         {!isLogin && (
@@ -122,6 +124,7 @@ const AuthScreen = () => {
                                     value={confirmPassword}
                                     onChangeText={setConfirmPassword}
                                     secureTextEntry
+                                    placeholderTextColor="#94A3B8"
                                 />
                             </>
                         )}
